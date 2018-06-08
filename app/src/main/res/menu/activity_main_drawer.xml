@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_home"
+            android:title="首页" />
+        <item
+            android:id="@+id/nav_today"
+            android:icon="@drawable/ic_menu_today"
+            android:title="每日一题" />
+        <item
+            android:id="@+id/nav_testpaper"
+            android:icon="@drawable/ic_menu_testpaper"
+            android:title="习题集和试卷" />
+        <item
+            android:id="@+id/nav_article"
+            android:icon="@drawable/ic_menu_article"
+            android:title="文章" />
+    </group>
+
+    <item android:title="更多">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="分享" />
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/ic_menu_info"
+                android:title="关于" />
+        </menu>
+    </item>
+
+</menu>
