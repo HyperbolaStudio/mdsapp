@@ -22,6 +22,15 @@ public class MainActivity extends AppCompatActivity
     private WebView webView;
     private long exitTime = 0;
     private String homeurl = "http://micokedatiservice.hyperbola.studio/";
+    private WebViewClient wvc = new WebViewClient() {
+        //设置在webView点击打开的新网页在当前界面显示,而不跳转到新的浏览器中
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,14 +57,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         //以下是webview代码
         webView = (WebView)findViewById(R.id.wv);
-        webView.setWebViewClient(new WebViewClient() {
-            //设置在webView点击打开的新网页在当前界面显示,而不跳转到新的浏览器中
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
-                return true;
-            }
-        });
+        webView.setWebViewClient(wvc);
         webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
         webView.getSettings().setJavaScriptEnabled(true);  //设置WebView属性,运行执行js脚本
         webView.loadUrl(homeurl);//载入首页
