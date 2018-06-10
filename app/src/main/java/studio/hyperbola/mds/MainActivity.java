@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity
             return true;
         }
     };
-
+    private WebChromeClient wcc=new WebChromeClient(){};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
