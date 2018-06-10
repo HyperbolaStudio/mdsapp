@@ -1,6 +1,8 @@
 package studio.hyperbola.mds;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -29,6 +31,20 @@ public class MainActivity extends AppCompatActivity
             view.loadUrl(url);
             return true;
         }
+        ProgressDialog pvd=new ProgressDialog(null);
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            pvd.setMessage("请稍候");
+            pvd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            pvd.show();
+            super.onPageStarted(view, url, favicon);
+        }
+
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            pvd.dismiss();
+            super.onPageFinished(view, url);
+        }
     };
     private WebChromeClient wcc=new WebChromeClient(){};
     @Override
@@ -42,7 +58,7 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "这是测试版应用 ver0.0.1_alpha", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "这是测试版应用 ver0.1.0_alpha", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
